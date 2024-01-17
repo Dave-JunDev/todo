@@ -1,17 +1,108 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root
+{
+    --color-black: #0F0F0F;
+    --color-grey: #232D3F;
+    --color-green-dark: #005B41;
+    --color-green: #008170;
+}
+body
+{
+    background-color: var(--color-black);
+    color: whitesmoke;
+}
+.container-app
+{
+    width: 90%;
+    margin: 0 auto;
+}
+.title
+{
+    width: 40vw;
+    font-size: 30px;
+    margin-bottom: 1em;
+    text-align: center;
+}
+.todo
+{
+    margin-top: 2em;
+    border: var(--color-green-dark) 5px solid;
+    width: 42vw;
+    padding: 10px;
+    border-radius: 10px;
+}
+.Search
+{
+    width: 40vw;
+    font-size: 24px;
+    border: black 4px solid;
+    border-radius: 12px;
+    padding: 6px;
+    color: black;
+}
+li
+{
+    width: 40vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-grey);
+    border-radius: 10px;
+    margin: 15px 0 15px 0;
+    padding: 0.2em;
+}
+.icon
+{
+    position: relative;
+    left: 10px;
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.icon-check--active
+{
+    color: var(--color-green);
+}
+.text-todo
+{
+    position: relative;
+    left: 20px;
+    width: 100vw;
+    font-size: 20px;
+    padding: 0.2em;
+}
+.text-todo--complete
+{
+    text-decoration-line: line-through;
+}
+.closed
+{
+   position: relative;
+   left: -15px;
+   top: -20px;
+   font-size: 25px;
+   font-weight: bold;
+   cursor: pointer;
+   transition: 0.5s ease-in-out;
+}
+.closed:hover
+{
+    color: #FF004D;
+}
+.container-button
+{
+    width: 40vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-      monospace;
-}
-
-ul {
-  list-style: none;
+button
+{
+    font-size: 20px;
 }

@@ -1,11 +1,11 @@
 
-export default function TodoItem()
+export default function TodoItem({text, completed})
 {
     return(
         <li>
-            <span>V</span>
-            <p>Llorar con la Llorona</p>
-            <span>X</span>
+            <span className="icon icon-check icon-check--active">V</span>
+            <p className="text-todo text-todo--complete">{text}</p>
+            <span className="closed">X</span>
         </li>
     )
 }

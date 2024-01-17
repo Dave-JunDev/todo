@@ -1,10 +1,14 @@
 
 import React from 'react'
 
-export default function TodoCount(props) {
+function TodoCount({total, completed}) {
   return (
     <>
-      <h1>Ya completaste {props.completed} de {props.total} TODOs</h1>
+      <h1 className='title'>
+        Ya completaste {completed} de {total} TODOs
+      </h1>
     </>
   )
 }
+
+export {TodoCount}
