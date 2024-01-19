@@ -4,17 +4,18 @@ import {TodoCount} from './components/TodoCount'
 import {TodoItem} from './components/TodoItem'
 import {TodoList} from './components/TodoList'
 import {TodoSearch} from './components/TodoSearch'
-
-const defaultTodos = [
-  {text: 'Cortar cebolla', completed: true},
-  {text: 'Tomar el curos de intro a react.js', completed: false},
-  {text: 'Llorar con la Llorona', completed: false},
-  {text: 'LALALA', completed: true},
-]
+import { useLocalStorage } from './hooks/useLocalStorage'
+/*const defaultTodos = [
+  { text: "Cortar cebolla", completed: true },
+  { text: "Tomar el curos de intro a react.js", completed: false },
+  { text: "Llorar con la Llorona", completed: false },
+  { text: "LALALA", completed: true },
+];
+localStorage.setItem("Todo_V1", JSON.stringify(defaultTodos));*/
 export default function App() {
 
   const [searchValue, setSearchValue] = useState('')
-  const [todos, setTodos] = useState(defaultTodos)
+  const [todos, saveTodos] = useLocalStorage('Todo_V1', [])
 
   const completedTodos = todos.filter(
     (todo) => todo.completed)
@@ -33,14 +34,14 @@ export default function App() {
     const newTodos = [...todos]
     let todoIndex = newTodos.findIndex((todo) => todo.text === text)
     newTodos[todoIndex].completed = true;
-    setTodos(newTodos)
+    saveTodos(newTodos)
   }
 
   const removeTodo = (text) => {
     const newTodos = [...todos]
     let todoIndex = newTodos.findIndex((todo) => todo.text === text)
     newTodos.splice(todoIndex, 1)
-    setTodos(newTodos)
+    saveTodos(newTodos)
   }
 
   return (
