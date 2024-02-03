@@ -28,6 +28,8 @@ jobs:
       - name: install
         run: npm i
       # Runs a single command using the runners shell
+      - name: run
+        run: npm run dev
       - name: build
         run: npm run build
 
