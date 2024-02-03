@@ -1,11 +1,14 @@
 
-import React from 'react'
+import React, { useContext } from 'react'
+import { TodoContext } from '../Context/TodoContext'
 
-function TodoCount({total, completed}) {
+function TodoCount() {
+  const {completedTodos, totalTodos} = useContext(TodoContext)
+
   return (
     <>
       <h1 className='title'>
-        Ya completaste {completed} de {total} TODOs
+        Ya completaste {completedTodos} de {totalTodos} TODOs
       </h1>
     </>
   )

@@ -1,21 +1,40 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
 
 function useLocalStorage(itemName, initialValue) {
 
-  const local = localStorage.getItem(itemName);
-  let parsedItem;
+  const [item, setItem] = useState(initialValue)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(false)
 
-  if(local)
-  {
-    parsedItem = JSON.parse(local)
-  }
-  else
-  {
-    localStorage.setItem(itemName, JSON.stringify(initialValue))
-    parsedItem = initialValue
-  }
+  useEffect(() => {
+    setTimeout(() => 
+    {
+      try
+      {
+        const local = localStorage.getItem(itemName)
+        let parsedItem
+        if(local)
+        {
+          parsedItem = JSON.parse(local)
+          setItem(parsedItem)
+        }
+        else
+        {
+          localStorage.setItem(itemName, JSON.stringify(initialValue))
+          parsedItem = initialValue
+        }
 
-  const [item, setItem] = useState(parsedItem)
+        setLoading(false)
+      }
+      catch(error)
+      {
+        setLoading(false)
+        setError(error)
+      }
+    },2000)
+  }, [])
+
 
   const saveItem = (newItems) =>
   {
@@ -23,7 +42,15 @@ function useLocalStorage(itemName, initialValue) {
     setItem(newItems)
   }
 
-  return [item, saveItem]
+  return {item, saveItem, loading, error}
 }
 
 export {useLocalStorage}
+
+/*const defaultTodos = [
+  { text: "Cortar cebolla", completed: true },
+  { text: "Tomar el curos de intro a react.js", completed: false },
+  { text: "Llorar con la Llorona", completed: false },
+  { text: "LALALA", completed: true },
+];
+localStorage.setItem("Todo_V1", JSON.stringify(defaultTodos));*/
