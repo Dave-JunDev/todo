@@ -15,6 +15,7 @@ function AppUI() {
         completeTodo,
         removeTodo
     } = useContext(TodoContext)
+    console.log(error)
     return (
     <>
         <div className='container-app'>
