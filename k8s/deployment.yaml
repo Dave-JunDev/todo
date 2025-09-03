@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: portfolio
-          image: porfolio-app:latest
+          image: portfolio:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
